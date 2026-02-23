@@ -23,12 +23,13 @@ ema20 = float(close.ewm(span=20, adjust=False).mean().iloc[-1])
 ema50 = float(close.ewm(span=50, adjust=False).mean().iloc[-1])
 price = float(close.iloc[-1])
 
-    delta = close.diff()
-    gain = delta.clip(lower=0).rolling(14).mean()
-    loss = -delta.clip(upper=0).rolling(14).mean()
-    rs = gain / loss
-    rsi = 100 - (100 / (1 + rs))
-    rsi_val = float(rsi.iloc[-1])
+delta = close.diff()
+gain = delta.clip(lower=0).rolling(14).mean()
+loss = -delta.clip(upper=0).rolling(14).mean()
+
+rs = gain / loss
+rsi = 100 - (100 / (1 + rs))
+rsi_val = float(rsi.iloc[-1])
 
     # Trend logic
     if (price > ema20) and (ema20 > ema50):

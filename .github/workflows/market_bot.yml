@@ -3,8 +3,7 @@ name: Market AI Agent
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * 1-5"
-
+  - cron: "0 * * * 1-5"
 
 jobs:
   run-bot:
@@ -27,3 +26,4 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python market_agent_pro.py
+        
